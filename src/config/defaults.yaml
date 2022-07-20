@@ -1,0 +1,37 @@
+model_config:
+    cvlg:
+      losses:
+      - type: caption_cross_entropy
+      base_model_name: bert-base-uncased
+      training_head_type: pretraining
+      max_gen_length: 64
+      visual_embedding_dim: 2048
+      special_visual_initialize: true
+      embedding_strategy: plain
+      bypass_transformer: false
+      output_attentions: false
+      output_hidden_states: false
+      random_initialize: false
+      loop_contrastive: false
+      freeze_base: false
+      finetune_lr_multiplier: 1
+      num_layers: 12
+      attention_agg: mean
+      # Default points to BERT pooler strategy which is to take
+      # representation of CLS token after passing it through a dense layer
+      pooler_strategy: default
+      concate_trace: false
+      inference:
+        type: greedy
+      image_feature_processor:
+        type: projection
+        params:
+          module: linear
+          in_dim: 2048
+          out_dim: 768
+      trace_feature_encoder:
+        type: tracebox_encoder
+        params:
+          input_size: 5
+          hidden_size: 768
+          num_positions: 64

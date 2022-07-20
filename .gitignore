@@ -1,0 +1,12 @@
+result/
+runs/
+*.pyc
+lightning_logs/
+*.data
+.vscode/
+data/
+amlt/
+amlt_job_submit/
+.amlt*
+.ipynb_checkpoints/
+taming/
